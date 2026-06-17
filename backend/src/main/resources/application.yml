@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: signature-app
+  datasource:
+    url: jdbc:h2:file:./data/signatureapp
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 25MB
+  mail:
+    host: localhost
+    port: 1025
+
+app:
+  jwt:
+    secret: "change-this-dev-secret-to-a-very-long-production-secret-key"
+    expiration-ms: 86400000
+  storage:
+    upload-dir: uploads
+  public-url: http://localhost:5173
+
+logging:
+  level:
+    org.springframework.security: INFO
